@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,400&display=swap');
+
+/* Paleta de cores do jogo */
+:root {
+    --main-color: rgb(1, 3, 115);
+    --secundary-color: rgb(68, 62, 204);
+    --terciary-color: rgb(66, 141, 255);
+    --light-blue: rgb(164, 195, 253);
+    --light-color: rgb(200, 204, 203);
+    --font-color: rgb(240, 248, 255);
+}
+
+/* Configuração geral das páginas: */
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 90vh;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url(../Imagens/hollowed-boxes.png);
+    background-size: cover;
+    background-size: 120px;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--font-color);
+}
+
+/*Tabuleiros: */
+.Facil, .Dificil{
+    padding: 10px;
+    border-radius: 20px;
+    margin: 30px 10px;
+    align-items: center;
+    text-align: center;
+    background-position: center;
+    background-image: url(../Imagens/endless-constellation.png);
+    background-size: 80%;
+    box-shadow: 0px 0px 5px var(--main-color),
+        0 0 25px var(--main-color),
+        0 0 50px var(--main-color),
+        0 0 200px var(--main-color); 
+    display: flex;
+    flex-direction: column;
+    color: var(--font-color);    
+}
+
+.Medio{
+    padding: 10px;
+    border-radius: 20px;
+    margin: 60px 10px;
+    align-items: center;
+    text-align: center;
+    background-position: center;
+    background-image: url(../Imagens/endless-constellation.png);
+    background-size: 80%;
+    box-shadow: 0px 0px 5px var(--main-color),
+        0 0 25px var(--main-color),
+        0 0 50px var(--main-color),
+        0 0 200px var(--main-color); 
+    display: flex;
+    flex-direction: column;
+    color: var(--font-color);    
+}
+
+/* Nome, Tempo e nível */
+.Inicio{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--terciary-color);
+    width: 90%;
+    padding: 20px;
+    margin: 0px;
+    border-radius: 8px;
+}
+
+/* Cartas do Jogo da memória e sua disposição */
+.cartasFacil{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    max-width: 740px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.cartasMedio{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 23px;
+    max-width: 740px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.cartasDificil{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+    max-width: 740px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.carta, .carta img{
+    aspect-ratio: 3/4; /* tamanho da imagem */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: all 400ms ease;
+    transform-style: preserve-3d; /*mostra a carta como se fosse 3d - um verso e uma face*/
+    border-radius: 8px;
+    background-color: var(--terciary-color);
+}
+
+.Imagem{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    border: 2px solid var(--terciary-color);
+    transition: all 400ms ease;
+}
+
+.Frente{
+    transform: rotateY(180deg); 
+    /*tirar o espelhamento do transform após virar a carta*/
+}
+
+.Trás{
+    backface-visibility: hidden; /* para preservar o 3d*/
+    z-index: 1;
+}
+
+/* JS - Ação de clique na img */
+.mostrarCarta{
+    transform: rotateY(180deg);
+}
+
+/* JS - Comparação se as imagens são iguais */
+.match{
+    opacity: 0.5;
+    filter: saturate(0);
+}
+
+/* JS - Botão aparece ao finalizar a rodada */
+.PróximoNivel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 740px;
+    margin: 0;
+}
+
+.proximo{
+    display: none;
+    visibility: hidden;
+}
+
+/* Estilização dos Botões de voltar ao início e próximo nível */
+input[type='submit']{
+    border-radius: 8px;
+    border: none;
+    padding: 15px;
+    color: var(--font-color);
+    font-weight: bolder;
+    background-color: rgba(66, 141, 255, 0.8);
+    cursor: pointer;
+    box-shadow: 0px 0px 25px var(--secundary-color),
+        0 0 55px var(--secundary-color); 
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .Inicio{
+        max-width: 740px;
+    }
+    .cartasFacil{
+        max-height: 90vh;
+    }
+    .Facil{
+        margin: auto;
+        width: 45%;
+        padding: 10px 80px;
+    }
+    .Medio{
+        width: 80%;
+        margin: 80px auto 0px;
+    }
+    .Dificil{
+        width: 60%;
+        margin: auto;
+    }
+}
