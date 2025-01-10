@@ -13,9 +13,9 @@ Este é um projeto desenvolvido para a matéria de Full Stack na faculdade. O ob
  
 ## 🛠️ Tecnologias Utilizadas
 - PHP: Para parte da lógica do jogo e alocação dinâmica das cartas.
-HTML/CSS: Para a interface e estilização.
-JavaScript: Para manipulação de eventos e melhor interatividade.
-<br>
+- HTML/CSS: Para a interface e estilização.
+- JavaScript: Para manipulação de eventos e melhor interatividade.
+<br />
 
 ## Algumas imagens do jogo: 
 <br>
